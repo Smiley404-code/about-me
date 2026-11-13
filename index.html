@@ -198,19 +198,32 @@
   <footer>Made with <span class="heart">&#10084;</span> by Smiley</footer>
 </div>
 
-<nav class="bottomnav glass">
-  <a href="#top" class="active">
+<nav class="bottomnav glass" aria-label="Main navigation">
+  <a href="#top" class="active" data-nav="home">
     <svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
     Home
   </a>
-  <a href="work.html?v=workpage1">
+  <a href="work.html?v=worknav2" data-nav="work">
     <svg viewBox="0 0 24 24"><path d="M20 6h-4V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm-10-2h4v2h-4V4zm10 15H4V8h16v11z"/></svg>
     My Work
   </a>
-  <a href="#about">
+  <a href="#about" data-nav="about">
     <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
     About Me
   </a>
 </nav>
+<script>
+  (() => {
+    const homeLink = document.querySelector('[data-nav="home"]');
+    const aboutLink = document.querySelector('[data-nav="about"]');
+    const updateActive = () => {
+      const aboutIsActive = window.location.hash === '#about';
+      homeLink.classList.toggle('active', !aboutIsActive);
+      aboutLink.classList.toggle('active', aboutIsActive);
+    };
+    window.addEventListener('hashchange', updateActive);
+    updateActive();
+  })();
+</script>
 </body>
                                                               </html>
