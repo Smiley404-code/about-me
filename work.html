@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Work - Smiley</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(160deg, #051F20 0%, #0B2B26 35%, #235347 80%, #2e6b5a 120%) fixed;
+    color: #DAF1DE;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 40px 18px 120px; }
+
+  /* Liquid glass surfaces */
+  .glass {
+    background: rgba(218,241,222,.09);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(218,241,222,.22);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(5,31,32,.35), inset 0 1px 0 rgba(255,255,255,.14);
+  }
+
+  /* Header */
+  .profile { text-align: center; margin-bottom: 34px; }
+  .monogram {
+    width: 92px; height: 92px; margin: 0 auto 14px;
+    border-radius: 50%;
+    background: rgba(218,241,222,.12);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(218,241,222,.3);
+    box-shadow: 0 8px 32px rgba(5,31,32,.35), inset 0 1px 0 rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px; font-weight: 800; color: #DAF1DE;
+  }
+  h1 { font-size: 30px; letter-spacing: 1px; color: #ffffff; }
+  h1 .accent { color: #8EB69B; }
+  .tagline { color: #8EB69B; font-size: 14px; margin-top: 6px; }
+  .about {
+    padding: 14px 16px; margin-top: 18px;
+    font-size: 14px; line-height: 1.55; color: #DAF1DE;
+  }
+  .about .about-title { color: #8EB69B; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+
+  /* Sections */
+  .section { margin-bottom: 28px; }
+  .section-title {
+    display:flex; align-items:center; gap:8px;
+    font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
+    color: #DAF1DE; margin-bottom: 12px; font-weight: 700;
+  }
+  .section-title svg { width: 18px; height: 18px; fill: #8EB69B; }
+  .subhead {
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: #8EB69B; padding-bottom: 6px; border-bottom: 1px solid rgba(218,241,222,.18);
+    margin: 16px 0 10px;
+  }
+  .subhead.first { margin-top: 2px; }
+
+  /* Link cards */
+  .card {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px; margin-bottom: 10px;
+    text-decoration: none; color: inherit;
+    transition: transform .15s, background .15s;
+  }
+  a.card:active { transform: scale(.98); background: rgba(218,241,222,.16); }
+  .card .icon {
+    width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .card .icon svg { width: 22px; height: 22px; fill: #fff; }
+  .card img.avatar { width: 46px; height: 46px; border-radius: 50%; border: 2px solid rgba(218,241,222,.4); flex-shrink: 0; }
+  .card .txt { flex: 1; min-width: 0; }
+  .card .name { font-size: 15px; font-weight: 600; color: #ffffff; }
+  .card .sub { font-size: 12px; color: #8EB69B; margin-top: 2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .card .arrow { color: #8EB69B; font-size: 18px; }
+  .icon-web { background: linear-gradient(135deg, #8EB69B, #235347); }
+
+  footer { text-align:center; color:#8EB69B; font-size:12px; margin-top:36px; }
+  footer .heart { color:#8EB69B; }
+
+  /* Bottom navigation */
+  .bottomnav {
+    position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+    width: min(440px, calc(100% - 24px));
+    border-radius: 28px;
+    display: flex; justify-content: space-around;
+    padding: 10px 8px; z-index: 50;
+  }
+  .bottomnav a {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    text-decoration: none; font-size: 11px; font-weight: 600; color: #8EB69B;
+    padding: 6px 18px; border-radius: 20px;
+  }
+  .bottomnav a.active {
+    color: #ffffff;
+    background: rgba(218,241,222,.16);
+    border: 1px solid rgba(218,241,222,.25);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+  }
+  .bottomnav svg { width: 20px; height: 20px; fill: currentColor; }
+
+  .back-link { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; color:#DAF1DE; text-decoration:none; font-size:14px; font-weight:600; margin-bottom:24px; }
+  .work-header { margin-bottom:28px; }
+  .work-header h1 { font-size:30px; letter-spacing:0; }
+  .work-header p { color:#8EB69B; font-size:14px; line-height:1.6; margin-top:8px; }
+  .wrap { padding-top:24px; padding-bottom:40px; }
+  .section > .section-title { display:none; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back-link glass" href="./?v=workpage1"><span aria-hidden="true">&#8592;</span> Back to Home</a>
+  <header class="work-header">
+    <h1>My <span style="color:#8EB69B">Work</span></h1>
+    <p>Websites, app, game &amp; Minecraft add-ons by Smiley.</p>
+  </header>
+  <div class="section" id="work">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3a15.6 15.6 0 0 0-1.2-5.4A8 8 0 0 1 19.9 11zM12 4.1c.8 1.2 1.9 3.7 2.1 6.9H9.9c.2-3.2 1.3-5.7 2.1-6.9zM4.1 13h3c.1 2.2.5 4 1.2 5.4A8 8 0 0 1 4.1 13zm3-2h-3a8 8 0 0 1 4.2-5.4A15.6 15.6 0 0 0 7.1 11zM12 19.9c-.8-1.2-1.9-3.7-2.1-6.9h4.2c-.2 3.2-1.3 5.7-2.1 6.9zm2.4-6.9h3a8 8 0 0 1-4.2 5.4c.7-1.4 1.1-3.2 1.2-5.4z"/></svg>
+      My Work
+    </div>
+    <div class="subhead first">Websites</div>
+    <a class="card glass" href="https://smiley404-code.github.io/tamil-movie-timeline/">
+      <div class="icon icon-web"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3a15.6 15.6 0 0 0-1.2-5.4A8 8 0 0 1 19.9 11zM12 4.1c.8 1.2 1.9 3.7 2.1 6.9H9.9c.2-3.2 1.3-5.7 2.1-6.9zM4.1 13h3c.1 2.2.5 4 1.2 5.4A8 8 0 0 1 4.1 13zm3-2h-3a8 8 0 0 1 4.2-5.4A15.6 15.6 0 0 0 7.1 11zM12 19.9c-.8-1.2-1.9-3.7-2.1-6.9h4.2c-.2 3.2-1.3 5.7-2.1 6.9zm2.4-6.9h3a8 8 0 0 1-4.2 5.4c.7-1.4 1.1-3.2 1.2-5.4z"/></svg></div>
+      <div class="txt"><div class="name">Tamil Movie Timeline</div><div class="sub">1,092 Tamil movies, 2022-2026</div></div>
+      <div class="arrow">&rsaquo;</div>
+    </a>
+    <a class="card glass" href="https://smiley404-code.github.io/about-me/">
+      <div class="icon icon-web"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3a15.6 15.6 0 0 0-1.2-5.4A8 8 0 0 1 19.9 11zM12 4.1c.8 1.2 1.9 3.7 2.1 6.9H9.9c.2-3.2 1.3-5.7 2.1-6.9zM4.1 13h3c.1 2.2.5 4 1.2 5.4A8 8 0 0 1 4.1 13zm3-2h-3a8 8 0 0 1 4.2-5.4A15.6 15.6 0 0 0 7.1 11zM12 19.9c-.8-1.2-1.9-3.7-2.1-6.9h4.2c-.2 3.2-1.3 5.7-2.1 6.9zm2.4-6.9h3a8 8 0 0 1-4.2 5.4c.7-1.4 1.1-3.2 1.2-5.4z"/></svg></div>
+      <div class="txt"><div class="name">Smiley - About Me</div><div class="sub">All my links in one place</div></div>
+      <div class="arrow">&rsaquo;</div>
+    </a>
+    <div class="subhead">App</div>
+    <a class="card glass" href="https://drive.google.com/uc?export=download&id=1UeN8FoHZTYJT3TV5guW9-Mb1YxATp5Ji">
+      <div class="icon icon-web"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3a15.6 15.6 0 0 0-1.2-5.4A8 8 0 0 1 19.9 11zM12 4.1c.8 1.2 1.9 3.7 2.1 6.9H9.9c.2-3.2 1.3-5.7 2.1-6.9zM4.1 13h3c.1 2.2.5 4 1.2 5.4A8 8 0 0 1 4.1 13zm3-2h-3a8 8 0 0 1 4.2-5.4A15.6 15.6 0 0 0 7.1 11zM12 19.9c-.8-1.2-1.9-3.7-2.1-6.9h4.2c-.2 3.2-1.3 5.7-2.1 6.9zm2.4-6.9h3a8 8 0 0 1-4.2 5.4c.7-1.4 1.1-3.2 1.2-5.4z"/></svg></div>
+      <div class="txt"><div class="name">Tamil Movie Timeline App</div><div class="sub">Android APK &bull; download</div></div>
+      <div class="arrow">&#8595;</div>
+    </a>
+    <div class="subhead">Game</div>
+    <a class="card glass" href="https://smiley404-code.github.io/open-world-game/">
+      <div class="icon icon-web"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3a15.6 15.6 0 0 0-1.2-5.4A8 8 0 0 1 19.9 11zM12 4.1c.8 1.2 1.9 3.7 2.1 6.9H9.9c.2-3.2 1.3-5.7 2.1-6.9zM4.1 13h3c.1 2.2.5 4 1.2 5.4A8 8 0 0 1 4.1 13zm3-2h-3a8 8 0 0 1 4.2-5.4A15.6 15.6 0 0 0 7.1 11zM12 19.9c-.8-1.2-1.9-3.7-2.1-6.9h4.2c-.2 3.2-1.3 5.7-2.1 6.9zm2.4-6.9h3a8 8 0 0 1-4.2 5.4c.7-1.4 1.1-3.2 1.2-5.4z"/></svg></div>
+      <div class="txt"><div class="name">Try 1</div><div class="sub">Open-world game &bull; play in browser</div></div>
+      <div class="arrow">&rsaquo;</div>
+    </a>
+    <div class="subhead">Minecraft Add-ons</div>
+    <a class="card glass" href="https://drive.google.com/uc?export=download&id=1vRMM2Jcmi1I9vUaKl8_0DzmbTyv9oJIy">
+      <div class="icon icon-web"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3a15.6 15.6 0 0 0-1.2-5.4A8 8 0 0 1 19.9 11zM12 4.1c.8 1.2 1.9 3.7 2.1 6.9H9.9c.2-3.2 1.3-5.7 2.1-6.9zM4.1 13h3c.1 2.2.5 4 1.2 5.4A8 8 0 0 1 4.1 13zm3-2h-3a8 8 0 0 1 4.2-5.4A15.6 15.6 0 0 0 7.1 11zM12 19.9c-.8-1.2-1.9-3.7-2.1-6.9h4.2c-.2 3.2-1.3 5.7-2.1 6.9zm2.4-6.9h3a8 8 0 0 1-4.2 5.4c.7-1.4 1.1-3.2 1.2-5.4z"/></svg></div>
+      <div class="txt"><div class="name">Ice Zombie 7</div><div class="sub">Minecraft Bedrock add-on &bull; download</div></div>
+      <div class="arrow">&#8595;</div>
+    </a>
+    <a class="card glass" href="https://drive.google.com/uc?export=download&id=1yC_g73MROfa5JgAOug4xukuaW2_HXF3E">
+      <div class="icon icon-web"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3a15.6 15.6 0 0 0-1.2-5.4A8 8 0 0 1 19.9 11zM12 4.1c.8 1.2 1.9 3.7 2.1 6.9H9.9c.2-3.2 1.3-5.7 2.1-6.9zM4.1 13h3c.1 2.2.5 4 1.2 5.4A8 8 0 0 1 4.1 13zm3-2h-3a8 8 0 0 1 4.2-5.4A15.6 15.6 0 0 0 7.1 11zM12 19.9c-.8-1.2-1.9-3.7-2.1-6.9h4.2c-.2 3.2-1.3 5.7-2.1 6.9zm2.4-6.9h3a8 8 0 0 1-4.2 5.4c.7-1.4 1.1-3.2 1.2-5.4z"/></svg></div>
+      <div class="txt"><div class="name">Armour Durability 1</div><div class="sub">Minecraft Bedrock add-on &bull; download</div></div>
+      <div class="arrow">&#8595;</div>
+    </a>
+  </div>
+
+  <footer>Made with <span class="heart">&#10084;</span> by Smiley</footer>
+</main>
+</body>
+</html>
