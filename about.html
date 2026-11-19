@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me - Smiley</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(160deg, #051F20 0%, #0B2B26 35%, #235347 80%, #2e6b5a 120%) fixed;
+    color: #DAF1DE;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 40px 18px 120px; }
+
+  /* Liquid glass surfaces */
+  .glass {
+    background: rgba(218,241,222,.09);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(218,241,222,.22);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(5,31,32,.35), inset 0 1px 0 rgba(255,255,255,.14);
+  }
+
+  /* Header */
+  .profile { text-align: center; margin-bottom: 34px; }
+  .monogram {
+    width: 92px; height: 92px; margin: 0 auto 14px;
+    border-radius: 50%;
+    background: rgba(218,241,222,.12);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(218,241,222,.3);
+    box-shadow: 0 8px 32px rgba(5,31,32,.35), inset 0 1px 0 rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px; font-weight: 800; color: #DAF1DE;
+  }
+  h1 { font-size: 30px; letter-spacing: 1px; color: #ffffff; }
+  h1 .accent { color: #8EB69B; }
+  .tagline { color: #8EB69B; font-size: 14px; margin-top: 6px; }
+  .about {
+    padding: 14px 16px; margin-top: 18px;
+    font-size: 14px; line-height: 1.55; color: #DAF1DE;
+  }
+  .about .about-title { color: #8EB69B; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+
+  /* Sections */
+  .section { margin-bottom: 28px; }
+  .section-title {
+    display:flex; align-items:center; gap:8px;
+    font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
+    color: #DAF1DE; margin-bottom: 12px; font-weight: 700;
+  }
+  .section-title svg { width: 18px; height: 18px; fill: #8EB69B; }
+  .subhead {
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: #8EB69B; padding-bottom: 6px; border-bottom: 1px solid rgba(218,241,222,.18);
+    margin: 16px 0 10px;
+  }
+  .subhead.first { margin-top: 2px; }
+
+  /* Link cards */
+  .card {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px; margin-bottom: 10px;
+    text-decoration: none; color: inherit;
+    transition: transform .15s, background .15s;
+  }
+  a.card:active { transform: scale(.98); background: rgba(218,241,222,.16); }
+  .card .icon {
+    width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .card .icon svg { width: 22px; height: 22px; fill: #fff; }
+  .card img.avatar { width: 46px; height: 46px; border-radius: 50%; border: 2px solid rgba(218,241,222,.4); flex-shrink: 0; }
+  .card .txt { flex: 1; min-width: 0; }
+  .card .name { font-size: 15px; font-weight: 600; color: #ffffff; }
+  .card .sub { font-size: 12px; color: #8EB69B; margin-top: 2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .card .arrow { color: #8EB69B; font-size: 18px; }
+  .icon-ig { background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); }
+  .icon-dc { background: #5865F2; }
+  .icon-tg { background: #229ED9; }
+  .icon-web { background: linear-gradient(135deg, #8EB69B, #235347); }
+
+  footer { text-align:center; color:#8EB69B; font-size:12px; margin-top:36px; }
+  footer .heart { color:#8EB69B; }
+
+  /* Bottom navigation */
+  .bottomnav {
+    position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+    width: min(440px, calc(100% - 24px));
+    border-radius: 28px;
+    display: flex; justify-content: space-around;
+    padding: 10px 8px; z-index: 50;
+  }
+  .bottomnav a {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    text-decoration: none; font-size: 11px; font-weight: 600; color: #8EB69B;
+    padding: 6px 18px; border-radius: 20px;
+  }
+  .bottomnav a.active {
+    color: #ffffff;
+    background: rgba(218,241,222,.16);
+    border: 1px solid rgba(218,241,222,.25);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+  }
+  .bottomnav svg { width: 20px; height: 20px; fill: currentColor; }
+
+  .work-header { margin-bottom:28px; }
+  .work-header h1 { font-size:30px; letter-spacing:0; }
+  .work-header p { color:#8EB69B; font-size:14px; line-height:1.6; margin-top:8px; }
+  .wrap { padding-top:24px; padding-bottom:120px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="work-header" id="top">
+    <h1>About <span style="color:#8EB69B">Me</span></h1>
+    <p>Gaming &bull; Tech &bull; Movies &mdash; all my channels in one place</p>
+  </header>
+  <div class="section">
+    <div class="about glass" id="about">
+      <div class="about-title">About Me</div>
+      Hi! I'm Smiley. I build websites and create videos about gaming, tech and movies. Follow all my channels below!
+    </div>
+  </div>
+  <footer>Made with <span class="heart">&#10084;</span> by Smiley</footer>
+</div>
+
+<nav class="bottomnav glass" aria-label="Main navigation">
+  <a href="index.html" data-nav="home">
+    <svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+    Home
+  </a>
+  <a href="work.html?v=worknav3" data-nav="work">
+    <svg viewBox="0 0 24 24"><path d="M20 6h-4V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm-10-2h4v2h-4V4zm10 15H4V8h16v11z"/></svg>
+    My Work
+  </a>
+  <a href="about.html" class="active" data-nav="about" aria-current="page">
+    <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+    About Me
+  </a>
+</nav>
+</body>
+</html>
